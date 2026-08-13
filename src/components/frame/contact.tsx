@@ -109,7 +109,7 @@ export function Contact() {
                         </option>
                       ))}
                     </select>
-                    {errors.type && <p className="label-mono mt-2 text-destructive">{errors.type}</p>}
+                    {errors['type'] && <p className="label-mono mt-2 text-destructive">{errors['type']}</p>}
                   </div>
 
                   <div>
@@ -124,8 +124,8 @@ export function Contact() {
                       placeholder="Objetivo, prazo e contexto do projeto"
                       className={`${field} resize-none`}
                     />
-                    {errors.message && (
-                      <p className="label-mono mt-2 text-destructive">{errors.message}</p>
+                    {errors['message'] && (
+                      <p className="label-mono mt-2 text-destructive">{errors['message']}</p>
                     )}
                   </div>
 

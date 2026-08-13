@@ -43,14 +43,15 @@ export function Hero() {
       <div
         ref={symbolRef}
         aria-hidden
-        className="pointer-events-none absolute -right-[18%] top-[6%] w-[78vw] max-w-[820px] transition-transform duration-500 ease-out md:-right-[8%] md:top-0 md:w-[52vw]"
+        className="pointer-events-none absolute -right-[22%] top-[14%] w-[70vw] max-w-[620px] opacity-[0.06] transition-transform duration-500 ease-out md:-right-[6%] md:top-[10%] md:w-[38vw] md:opacity-[0.09]"
       >
         <img
           src={symbol.url}
           alt=""
-          className="anim-corner w-full opacity-[0.07] md:opacity-[0.12]"
+          className="anim-corner w-full"
           style={{ animationDelay: "120ms" }}
         />
+
       </div>
 
       <div className="relative mx-auto w-full max-w-[1400px] px-5 md:px-10">

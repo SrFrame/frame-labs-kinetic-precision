@@ -11,6 +11,8 @@ import {
   Faq,
 } from "@/components/frame/sections";
 import { Contact, Footer } from "@/components/frame/contact";
+import { ScrollProgress, Cursor } from "@/components/frame/motion";
+
 
 const title = "FRAME LABS — Design que transforma atenção em clientes";
 const description =
@@ -48,6 +50,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      <ScrollProgress />
+      <Cursor />
       <Nav />
       <main>
         <Hero />
@@ -64,3 +68,4 @@ function Index() {
     </>
   );
 }
+

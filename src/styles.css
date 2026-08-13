@@ -126,19 +126,187 @@
   line-height: 0.92;
 }
 
-/* Scroll reveal */
-@utility reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+/* ------------------------------------------------------------------ *
+ * KINETIC PRECISION — motion system
+ * Fast · Controlled · Structured · Directional · Intentional
+ * ------------------------------------------------------------------ */
 
-  &[data-visible="true"] {
-    opacity: 1;
-    transform: none;
-  }
+:root {
+  --ease-precise: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-micro: 200ms;
+  --dur-fast: 320ms;
+  --dur-base: 640ms;
+  --mx: 0;
+  --my: 0;
+}
+
+/* Scroll reveal — base */
+.reveal {
+  will-change: opacity, transform;
+  transition:
+    opacity var(--dur-base) var(--ease-precise),
+    transform var(--dur-base) var(--ease-precise),
+    clip-path var(--dur-base) var(--ease-precise);
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+.reveal-up[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* clip: wipes in from the bottom edge, grid-aligned */
+.reveal-clip {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: translate3d(0, 12px, 0);
+}
+.reveal-clip[data-visible="true"] {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+/* mask: horizontal wipe, directional */
+.reveal-mask {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+.reveal-mask[data-visible="true"] {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* line: hairline draws itself */
+.reveal-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-base) var(--ease-precise);
+}
+.reveal-line[data-visible="true"] {
+  transform: scaleX(1);
+}
+
+/* frame: enters marginally out of alignment, then snaps into the grid */
+.reveal-frame {
+  opacity: 0;
+  transform: translate3d(-10px, 10px, 0) scale(0.985);
+}
+.reveal-frame[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+  transition-duration: 780ms;
+}
+
+/* Stagger container: children sequence via nth-child */
+.stagger > * {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    opacity var(--dur-base) var(--ease-precise),
+    transform var(--dur-base) var(--ease-precise);
+}
+.stagger[data-visible="true"] > * {
+  opacity: 1;
+  transform: none;
+}
+.stagger > *:nth-child(1) { transition-delay: calc(var(--base, 0ms) + 0 * var(--step, 70ms)); }
+.stagger > *:nth-child(2) { transition-delay: calc(var(--base, 0ms) + 1 * var(--step, 70ms)); }
+.stagger > *:nth-child(3) { transition-delay: calc(var(--base, 0ms) + 2 * var(--step, 70ms)); }
+.stagger > *:nth-child(4) { transition-delay: calc(var(--base, 0ms) + 3 * var(--step, 70ms)); }
+.stagger > *:nth-child(5) { transition-delay: calc(var(--base, 0ms) + 4 * var(--step, 70ms)); }
+.stagger > *:nth-child(6) { transition-delay: calc(var(--base, 0ms) + 5 * var(--step, 70ms)); }
+.stagger > *:nth-child(7) { transition-delay: calc(var(--base, 0ms) + 6 * var(--step, 70ms)); }
+.stagger > *:nth-child(8) { transition-delay: calc(var(--base, 0ms) + 7 * var(--step, 70ms)); }
+
+/* Line-masked text reveal */
+.line-mask {
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.line-mask-inner {
+  transform: translate3d(0, 105%, 0);
+  transition: transform 760ms var(--ease-precise);
+  will-change: transform;
+}
+[data-visible="true"] .line-mask-inner {
+  transform: none;
+}
+
+/* CTA microinteraction */
+.cta {
+  transition:
+    color var(--dur-fast) var(--ease-snap),
+    border-color var(--dur-fast) var(--ease-snap),
+    transform var(--dur-micro) var(--ease-snap);
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-background);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform var(--dur-fast) var(--ease-snap);
+}
+.cta:hover::before,
+.cta:focus-visible::before {
+  transform: scaleY(1);
+}
+.cta:hover {
+  color: var(--color-foreground);
+  border-color: var(--color-foreground);
+}
+.cta:active {
+  transform: translateY(1px);
+}
+.cta-arrow {
+  transition: transform var(--dur-fast) var(--ease-snap);
+}
+.cta:hover .cta-arrow,
+.cta:focus-visible .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Section label tick */
+.corner-tick {
+  transition: transform var(--dur-fast) var(--ease-snap);
+}
+.group\/label:hover .corner-tick {
+  transform: translate(2px, 2px);
+}
+
+/* Custom cursor */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-foreground);
+}
+.cursor-ring {
+  width: 26px;
+  height: 26px;
+  border: 1px solid color-mix(in oklab, var(--color-foreground) 45%, transparent);
+  transition:
+    width 220ms var(--ease-snap),
+    height 220ms var(--ease-snap),
+    border-color 220ms var(--ease-snap);
+}
+.cursor-ring[data-state="active"] {
+  width: 42px;
+  height: 42px;
+  border-color: var(--color-accent);
 }
 
 @utility hairline-x {
@@ -159,7 +327,7 @@
 @keyframes fl-corner {
   from {
     opacity: 0;
-    transform: scale(1.35);
+    transform: scale(1.28);
   }
   to {
     opacity: 1;
@@ -167,12 +335,37 @@
   }
 }
 
+@keyframes fl-line-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @utility anim-enter {
-  animation: fl-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fl-enter 0.72s var(--ease-precise) both;
 }
 
 @utility anim-corner {
-  animation: fl-corner 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fl-corner 0.9s var(--ease-precise) both;
+}
+
+@utility anim-line-x {
+  transform-origin: left center;
+  animation: fl-line-x 0.8s var(--ease-precise) both;
+}
+
+/* Mouse parallax layers (desktop only; --mx/--my are 0 otherwise) */
+@utility par-1 {
+  transform: translate3d(calc(var(--mx) * 6px), calc(var(--my) * 6px), 0);
+}
+@utility par-2 {
+  transform: translate3d(calc(var(--mx) * 16px), calc(var(--my) * 16px), 0);
+}
+@utility par-3 {
+  transform: translate3d(calc(var(--mx) * 28px), calc(var(--my) * 28px), 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -186,8 +379,55 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .reveal {
+  .reveal,
+  .stagger > * {
     opacity: 1 !important;
     transform: none !important;
+    clip-path: none !important;
   }
+  .line-mask-inner {
+    transform: none !important;
+  }
+  .par-1,
+  .par-2,
+  .par-3 {
+    transform: none !important;
+  }
+}
+
+
+/* Nav link — directional underline */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 280ms var(--ease-snap);
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@keyframes fl-scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+.scroll-hint {
+  animation: fl-scroll-hint 2.2s var(--ease-precise) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint { animation: none !important; }
+}
+
+@keyframes fl-line-up {
+  from { transform: translate3d(0, 105%, 0); }
+  to { transform: none; }
 }

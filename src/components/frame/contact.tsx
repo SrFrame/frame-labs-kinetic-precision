@@ -32,14 +32,15 @@ export function Contact() {
   };
 
   const field =
-    "w-full border-b border-white/20 bg-transparent py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent";
+    "w-full border-b border-white/20 bg-transparent py-3 text-base text-foreground outline-none transition-[border-color,transform] duration-300 ease-out placeholder:text-muted-foreground focus:border-accent focus:-translate-y-0.5";
 
   return (
     <section id="contato" className="dark border-t border-hairline bg-background py-24 text-foreground md:py-32">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-        <Reveal>
+        <Reveal variant="mask">
           <SectionLabel index="08" title="Contact" />
         </Reveal>
+
 
         <div className="mt-10 grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
@@ -61,7 +62,7 @@ export function Contact() {
 
           <div className="md:col-span-6 md:col-start-7">
             {sent ? (
-              <Reveal>
+              <Reveal variant="frame">
                 <div className="border border-white/20 p-10">
                   <span className="label-mono text-accent">Recebido</span>
                   <p className="mt-4 font-display text-2xl tracking-tight">
@@ -70,7 +71,8 @@ export function Contact() {
                 </div>
               </Reveal>
             ) : (
-              <Reveal>
+              <Reveal variant="clip">
+
                 <form onSubmit={onSubmit} noValidate className="space-y-8">
                   {[
                     { name: "name", label: "Nome", type: "text", ph: "Seu nome" },
@@ -131,10 +133,14 @@ export function Contact() {
 
                   <button
                     type="submit"
-                    className="label-mono w-full border border-foreground bg-foreground px-6 py-4 text-background transition-colors hover:bg-transparent hover:text-foreground sm:w-auto"
+                    className="cta label-mono group/cta relative inline-flex w-full items-center justify-center gap-3 overflow-hidden border border-foreground bg-foreground px-6 py-4 text-background sm:w-auto"
                   >
-                    Enviar projeto
+                    <span className="relative z-10">Enviar projeto</span>
+                    <span aria-hidden className="cta-arrow relative z-10">
+                      →
+                    </span>
                   </button>
+
                 </form>
               </Reveal>
             )}

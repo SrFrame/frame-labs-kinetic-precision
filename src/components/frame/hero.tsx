@@ -72,17 +72,14 @@ export function Hero() {
         </div>
 
         <div
-          className="anim-enter mt-14 flex items-center justify-between border-t border-hairline pt-4 label-mono text-muted-foreground"
+          className="anim-enter mt-14 flex items-center justify-end border-t border-hairline pt-4 label-mono text-muted-foreground"
           style={{ animationDelay: "820ms" }}
         >
-          <span>Scroll</span>
-          <span className="hidden sm:inline">
-            Precision — Movement — Structure — Experimentation
-          </span>
           <span aria-hidden className="scroll-hint">
             ↓
           </span>
         </div>
+
       </div>
     </section>
   );

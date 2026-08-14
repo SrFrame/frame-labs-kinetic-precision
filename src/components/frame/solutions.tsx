@@ -128,7 +128,7 @@ export function Solutions() {
             <article
               key={p.name}
               data-cursor="card"
-              className={`group relative flex h-full flex-col p-8 transition-colors duration-300 md:p-10 ${
+              className={`group lift relative flex h-full flex-col p-8 md:p-10 ${
                 p.featured ? "bg-secondary/60 hover:bg-secondary" : "bg-background hover:bg-secondary/50"
               }`}
             >

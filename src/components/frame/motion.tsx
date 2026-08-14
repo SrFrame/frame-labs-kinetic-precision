@@ -154,7 +154,7 @@ export function Reveal({
   delay = 0,
   variant = "up",
   as: Tag = "div",
-  threshold = 0.2,
+  threshold = 0.12,
   style,
 }: {
   children: ReactNode;
@@ -188,7 +188,7 @@ export function Stagger({
   className,
   step = 70,
   delay = 0,
-  threshold = 0.15,
+  threshold = 0.1,
   as: Tag = "div",
 }: {
   children: ReactNode;
@@ -225,7 +225,7 @@ export function TextReveal({
   delay?: number;
   step?: number;
 }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.25);
+  const { ref, visible } = useInView<HTMLDivElement>(0.15);
   return (
     <span ref={ref} data-visible={visible} className={cn("block", className)}>
       {lines.map((line, i) => (

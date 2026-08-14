@@ -83,14 +83,19 @@ export function usePointerField(enabled: boolean) {
 }
 
 /** Element enters the viewport once. */
-export function useInView<T extends HTMLElement>(threshold = 0.2, rootMargin = "0px 0px -8% 0px") {
+export function useInView<T extends HTMLElement>(threshold = 0.12, rootMargin = "0px 0px -12% 0px") {
   const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
     const io = new IntersectionObserver(
+
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
@@ -149,7 +154,7 @@ export function Reveal({
   delay = 0,
   variant = "up",
   as: Tag = "div",
-  threshold = 0.2,
+  threshold = 0.12,
   style,
 }: {
   children: ReactNode;
@@ -183,7 +188,7 @@ export function Stagger({
   className,
   step = 70,
   delay = 0,
-  threshold = 0.15,
+  threshold = 0.1,
   as: Tag = "div",
 }: {
   children: ReactNode;
@@ -220,7 +225,7 @@ export function TextReveal({
   delay?: number;
   step?: number;
 }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.25);
+  const { ref, visible } = useInView<HTMLDivElement>(0.15);
   return (
     <span ref={ref} data-visible={visible} className={cn("block", className)}>
       {lines.map((line, i) => (

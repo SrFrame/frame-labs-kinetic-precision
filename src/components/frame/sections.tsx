@@ -103,7 +103,7 @@ export function Services() {
             <article
               key={s.n}
               data-cursor="card"
-              className="group relative h-full bg-background p-8 transition-colors duration-300 hover:bg-foreground hover:text-background md:p-12"
+              className="group lift relative h-full bg-background p-8 hover:bg-foreground hover:text-background md:p-12"
             >
               <span className="label-mono inline-block text-muted-foreground transition-[transform,color] duration-300 group-hover:-translate-y-0.5 group-hover:text-background/60">
                 {s.n}
@@ -166,7 +166,7 @@ export function Differential() {
               {pillars.map((p, i) => (
                 <div
                   key={p}
-                  className="group relative flex aspect-square flex-col justify-between overflow-hidden bg-background p-5"
+                  className="group lift relative flex aspect-square flex-col justify-between overflow-hidden bg-background p-5"
                 >
                   <span className="label-mono text-muted-foreground">0{i + 1}</span>
                   <span className="font-display text-lg tracking-tight transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-accent md:text-xl">
@@ -311,8 +311,8 @@ export function Work() {
                   src={symbol.url}
                   alt="Símbolo FRAME LABS"
                   loading="lazy"
-                  style={{ transform: `translate3d(0, ${symbolShift}px, 0)` }}
-                  className="mt-10 h-16 w-16 object-contain will-change-transform"
+                  style={{ translate: `0 ${symbolShift}px` }}
+                  className="float-slower mt-10 h-16 w-16 object-contain will-change-transform"
                 />
               </div>
             </article>
@@ -327,7 +327,7 @@ export function Work() {
             <article
               key={p.title}
               data-cursor="card"
-              className="group relative h-full overflow-hidden bg-background p-8 transition-colors duration-300 hover:bg-secondary/60 md:p-10"
+              className="group lift relative h-full overflow-hidden bg-background p-8 hover:bg-secondary/60 md:p-10"
             >
               <span
                 aria-hidden

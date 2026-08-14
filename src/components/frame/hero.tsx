@@ -28,7 +28,7 @@ export function Hero() {
       {/* official symbol — masked scale-in, deepest mouse layer */}
       <div
         aria-hidden
-        className="par-3 pointer-events-none absolute -right-[22%] top-[14%] w-[70vw] max-w-[620px] opacity-[0.06] md:-right-[6%] md:top-[10%] md:w-[38vw] md:opacity-[0.09]"
+        className="par-3 float-slow pointer-events-none absolute -right-[22%] top-[14%] w-[70vw] max-w-[620px] opacity-[0.06] md:-right-[6%] md:top-[10%] md:w-[38vw] md:opacity-[0.09]"
       >
         <img
           src={symbol.url}

@@ -311,7 +311,7 @@ export function Work() {
                   src={symbol.url}
                   alt="Símbolo FRAME LABS"
                   loading="lazy"
-                  style={{ transform: `translate3d(0, ${symbolShift}px, 0)` }}
+                  style={{ translate: `0 ${symbolShift}px` }}
                   className="float-slower mt-10 h-16 w-16 object-contain will-change-transform"
                 />
               </div>

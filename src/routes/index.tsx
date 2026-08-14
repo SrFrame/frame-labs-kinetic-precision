@@ -10,6 +10,7 @@ import {
   Credibility,
   Faq,
 } from "@/components/frame/sections";
+import { Solutions } from "@/components/frame/solutions";
 import { Contact, Footer } from "@/components/frame/contact";
 import { ScrollProgress, Cursor } from "@/components/frame/motion";
 

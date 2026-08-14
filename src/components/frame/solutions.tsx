@@ -184,7 +184,7 @@ export function Solutions() {
                 ))}
               </ul>
 
-              <div className="mt-10 pt-2">
+              <div className="mt-auto pt-10">
                 <WhatsAppLink variant={p.featured ? "solid" : "outline"} className="w-full">
                   {p.cta}
                 </WhatsAppLink>

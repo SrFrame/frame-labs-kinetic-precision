@@ -143,12 +143,15 @@
 
 /* Scroll reveal — base */
 .reveal {
-  will-change: opacity, transform;
   transition:
     opacity var(--dur-base) var(--ease-precise),
     transform var(--dur-base) var(--ease-precise),
     clip-path var(--dur-base) var(--ease-precise);
 }
+.reveal:not([data-visible="true"]) {
+  will-change: opacity, transform;
+}
+
 
 .reveal-up {
   opacity: 0;

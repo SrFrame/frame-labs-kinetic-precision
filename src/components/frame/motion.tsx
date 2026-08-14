@@ -190,6 +190,7 @@ export function Stagger({
   delay = 0,
   threshold = 0.1,
   as: Tag = "div",
+  variant = "up",
 }: {
   children: ReactNode;
   className?: string;
@@ -197,6 +198,8 @@ export function Stagger({
   delay?: number;
   threshold?: number;
   as?: ElementType;
+  /** "up" (default, unchanged everywhere) or "clip" — adds the same wipe used by Reveal's clip variant, for sections that need more depth. */
+  variant?: "up" | "clip";
 }) {
   const { ref, visible } = useInView<HTMLDivElement>(threshold);
   return (
@@ -204,7 +207,7 @@ export function Stagger({
       ref={ref}
       data-visible={visible}
       style={{ "--step": `${step}ms`, "--base": `${delay}ms` } as CSSProperties}
-      className={cn("stagger", className)}
+      className={cn("stagger", variant === "clip" && "stagger-clip", className)}
     >
       {children}
     </Tag>

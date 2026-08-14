@@ -226,6 +226,19 @@
 .stagger > *:nth-child(7) { transition-delay: calc(var(--base, 0ms) + 6 * var(--step, 70ms)); }
 .stagger > *:nth-child(8) { transition-delay: calc(var(--base, 0ms) + 7 * var(--step, 70ms)); }
 
+/* Stagger — clip variant: same sequencing, adds the reveal-clip wipe for
+   sections that need more depth (e.g. portfolio cards). Opt-in only. */
+.stagger-clip > * {
+  clip-path: inset(0 0 100% 0);
+  transition:
+    opacity var(--dur-base) var(--ease-precise),
+    transform var(--dur-base) var(--ease-precise),
+    clip-path var(--dur-base) var(--ease-precise);
+}
+.stagger-clip[data-visible="true"] > * {
+  clip-path: inset(0 0 0 0);
+}
+
 /* Line-masked text reveal */
 .line-mask {
   overflow: hidden;

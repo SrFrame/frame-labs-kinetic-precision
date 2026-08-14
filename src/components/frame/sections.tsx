@@ -321,6 +321,7 @@ export function Work() {
 
         <Stagger
           step={90}
+          variant="clip"
           className="mt-px grid gap-px border-x border-b border-hairline bg-hairline md:grid-cols-3"
         >
           {projects.map((p) => (

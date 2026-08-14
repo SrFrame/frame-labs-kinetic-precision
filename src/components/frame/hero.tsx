@@ -51,16 +51,19 @@ export function Hero() {
           </span>
         </h1>
 
-        <div
-          className="anim-enter mt-10 grid gap-8 md:grid-cols-12"
-          style={{ animationDelay: "580ms" }}
-        >
+        <div className="mt-10 grid gap-8 md:grid-cols-12">
 
-          <p className="max-w-[52ch] text-base leading-relaxed text-muted-foreground md:col-span-6 md:col-start-1 md:text-lg">
+          <p
+            className="anim-enter max-w-[52ch] text-base leading-relaxed text-muted-foreground md:col-span-6 md:col-start-1 md:text-lg"
+            style={{ animationDelay: "580ms" }}
+          >
             Websites, landing pages e experiências digitais criadas para posicionar marcas com mais
             força no digital.
           </p>
-          <div className="flex flex-wrap items-start gap-3 md:col-span-6 md:justify-end">
+          <div
+            className="anim-enter flex flex-wrap items-start gap-3 md:col-span-6 md:justify-end"
+            style={{ animationDelay: "680ms" }}
+          >
             <Cta href="#contato">Solicitar um projeto</Cta>
             <Cta href="#projetos" variant="ghost">
               Ver nosso trabalho
@@ -70,7 +73,7 @@ export function Hero() {
 
         <div
           className="anim-enter mt-14 flex items-center justify-end border-t border-hairline pt-4 label-mono text-muted-foreground"
-          style={{ animationDelay: "700ms" }}
+          style={{ animationDelay: "820ms" }}
         >
           <span aria-hidden className="scroll-hint">
             ↓

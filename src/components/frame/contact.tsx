@@ -154,10 +154,12 @@ export function Contact() {
 export function Footer() {
   return (
     <footer className="dark bg-background text-foreground">
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-4 border-t border-hairline px-5 py-8 label-mono text-muted-foreground md:flex-row md:items-center md:justify-between md:px-10">
-        <span>© {new Date().getFullYear()} FRAME LABS</span>
-        <span>Kinetic Precision — Design que transforma atenção em clientes</span>
-      </div>
+      <Reveal>
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 border-t border-hairline px-5 py-8 label-mono text-muted-foreground md:flex-row md:items-center md:justify-between md:px-10">
+          <span>© {new Date().getFullYear()} FRAME LABS</span>
+          <span>Kinetic Precision — Design que transforma atenção em clientes</span>
+        </div>
+      </Reveal>
     </footer>
   );
 }

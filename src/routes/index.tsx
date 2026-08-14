@@ -58,6 +58,7 @@ function Index() {
         <Hero />
         <Statement />
         <Services />
+        <Solutions />
         <Differential />
         <Process />
         <Work />

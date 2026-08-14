@@ -39,26 +39,23 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto w-full max-w-[1400px] px-5 md:px-10">
-
-
-
-        <h1 className="display-xl max-w-[16ch] text-[clamp(2.6rem,9vw,7.5rem)]">
-          <TextReveal lines={["Design que", "transforma atenção"]} delay={380} step={100} />
+        <h1 className="par-2 display-xl max-w-[16ch] text-[clamp(2.6rem,9vw,7.5rem)]">
+          <TextReveal lines={["Design que", "transforma atenção"]} delay={260} step={100} />
           <span className="line-mask block">
             <span
               className="line-mask-inner block"
-              style={{ animation: "fl-line-up 760ms var(--ease-precise) 580ms both" }}
+              style={{ animation: "fl-line-up 760ms var(--ease-precise) 460ms both" }}
             >
               em <span className="text-accent">clientes.</span>
             </span>
           </span>
         </h1>
 
-
         <div
           className="anim-enter mt-10 grid gap-8 md:grid-cols-12"
-          style={{ animationDelay: "700ms" }}
+          style={{ animationDelay: "580ms" }}
         >
+
           <p className="max-w-[52ch] text-base leading-relaxed text-muted-foreground md:col-span-6 md:col-start-1 md:text-lg">
             Websites, landing pages e experiências digitais criadas para posicionar marcas com mais
             força no digital.

@@ -39,17 +39,8 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto w-full max-w-[1400px] px-5 md:px-10">
-        <div className="par-2 label-mono mb-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-muted-foreground">
-          <span className="anim-enter text-foreground" style={{ animationDelay: "220ms" }}>
-            FRAME LABS
-          </span>
-          <span className="anim-enter" style={{ animationDelay: "290ms" }}>
-            Kinetic Precision
-          </span>
-          <span className="anim-enter hidden sm:inline" style={{ animationDelay: "350ms" }}>
-            Digital Experience Studio
-          </span>
-        </div>
+
+
 
         <h1 className="display-xl max-w-[16ch] text-[clamp(2.6rem,9vw,7.5rem)]">
           <TextReveal lines={["Design que", "transforma atenção"]} delay={380} step={100} />
@@ -81,17 +72,14 @@ export function Hero() {
         </div>
 
         <div
-          className="anim-enter mt-14 flex items-center justify-between border-t border-hairline pt-4 label-mono text-muted-foreground"
+          className="anim-enter mt-14 flex items-center justify-end border-t border-hairline pt-4 label-mono text-muted-foreground"
           style={{ animationDelay: "820ms" }}
         >
-          <span>Scroll</span>
-          <span className="hidden sm:inline">
-            Precision — Movement — Structure — Experimentation
-          </span>
           <span aria-hidden className="scroll-hint">
             ↓
           </span>
         </div>
+
       </div>
     </section>
   );

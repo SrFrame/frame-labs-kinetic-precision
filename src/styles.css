@@ -267,6 +267,10 @@
 .cta:active {
   transform: translateY(1px);
 }
+.cta:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 3px;
+}
 .cta-arrow {
   transition: transform var(--dur-fast) var(--ease-snap);
 }

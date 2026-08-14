@@ -70,8 +70,8 @@ export function Hero() {
 
         <div
           className="anim-enter mt-14 flex items-center justify-end border-t border-hairline pt-4 label-mono text-muted-foreground"
-          style={{ animationDelay: "820ms" }}
-        >
+          style={{ animationDelay: "700ms" }}
+
           <span aria-hidden className="scroll-hint">
             ↓
           </span>

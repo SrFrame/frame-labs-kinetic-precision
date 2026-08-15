@@ -137,6 +137,10 @@
   --dur-micro: 200ms;
   --dur-fast: 320ms;
   --dur-base: 640ms;
+  /* Used only inside @media (prefers-reduced-motion: reduce): short, still
+     perceptible duration for the reveals that remain active — never 0/near-0,
+     so motion is reduced rather than erased. */
+  --dur-reduced: 160ms;
   --mx: 0;
   --my: 0;
 }
@@ -355,6 +359,30 @@
   }
 }
 
+/* Reduced-motion counterparts of fl-enter/fl-corner: opacity-led, minimal
+   displacement, used only inside @media (prefers-reduced-motion: reduce). */
+@keyframes fl-enter-reduced {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fl-corner-reduced {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes fl-line-x {
   from {
     transform: scaleX(0);
@@ -428,32 +456,75 @@
   html {
     scroll-behavior: auto;
   }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  .reveal,
-  .stagger > * {
-    opacity: 1 !important;
-    transform: none !important;
-    clip-path: none !important;
-  }
-  .line-mask-inner {
-    transform: none !important;
+
+  /* Fully disable motion that is decorative, continuous, or large-displacement —
+     exactly what prefers-reduced-motion exists to protect against. Pointer
+     parallax and the custom cursor are already gated in JS via
+     usePrefersReducedMotion() (see usePointerField/Cursor in motion.tsx), so
+     --mx/--my never get written here; these rules are the CSS-side backstop. */
+  .float-slow,
+  .float-slower,
+  .scroll-hint {
+    animation: none;
   }
   .par-1,
   .par-2,
   .par-3 {
-    translate: none !important;
+    translate: none;
+    transition: none;
   }
-  .float-slow,
-  .float-slower {
-    animation: none !important;
+  .lift:hover,
+  .lift:focus-within {
+    translate: none;
+    box-shadow: none;
   }
-  .lift:hover { translate: none !important; }
+
+  /* Entrance reveals stay on — but become brief, opacity-led
+     microinteractions with minimal transform, instead of the full-distance
+     transform/clip motion used when the user has no preference. */
+  .reveal,
+  .stagger > *,
+  .stagger-clip > * {
+    transition-duration: var(--dur-reduced);
+    transition-timing-function: ease-out;
+  }
+  .reveal-up:not([data-visible="true"]),
+  .stagger > * {
+    transform: translate3d(0, 4px, 0);
+  }
+  .reveal-clip:not([data-visible="true"]),
+  .stagger-clip > *:not([data-visible="true"]) {
+    clip-path: none;
+    transform: none;
+  }
+  .reveal-mask:not([data-visible="true"]) {
+    clip-path: none;
+  }
+  .reveal-frame:not([data-visible="true"]) {
+    transform: translate3d(0, 4px, 0) scale(0.995);
+  }
+  .reveal-frame[data-visible="true"] {
+    transition-duration: var(--dur-reduced);
+  }
+  .reveal-line {
+    transition-duration: var(--dur-reduced);
+  }
+  .line-mask-inner {
+    transition-duration: var(--dur-reduced);
+    transform: translate3d(0, 15%, 0);
+  }
+
+  .anim-enter {
+    animation-name: fl-enter-reduced;
+    animation-duration: var(--dur-reduced);
+  }
+  .anim-corner {
+    animation-name: fl-corner-reduced;
+    animation-duration: var(--dur-reduced);
+  }
+  .anim-line-x {
+    animation-duration: var(--dur-reduced);
+  }
 }
 
 
@@ -483,10 +554,6 @@
 }
 .scroll-hint {
   animation: fl-scroll-hint 2.2s var(--ease-precise) infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-hint { animation: none !important; }
 }
 
 @keyframes fl-line-up {

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Reveal, SectionLabel, Stagger, TextReveal, useSectionProgress } from "./motion";
 import logoWhite from "@/assets/logo-white.png.asset.json";
 import symbol from "@/assets/symbol.png.asset.json";
+import caiuasLogo from "@/assets/caiuas-logo.png.asset.json";
+
 
 const services = [
   {

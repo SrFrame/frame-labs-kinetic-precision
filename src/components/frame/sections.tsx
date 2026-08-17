@@ -319,6 +319,60 @@ export function Work() {
           </Reveal>
         </div>
 
+        {/* Case: Gráfica Caiuás */}
+        <Reveal variant="frame" delay={80}>
+          <article className="group mt-px grid gap-px border-x border-b border-hairline bg-hairline md:grid-cols-12">
+            <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-secondary/40 p-10 md:col-span-7 md:min-h-[460px]">
+              <img
+                src={caiuasLogo.url}
+                alt="Logo da Gráfica Caiuás"
+                loading="lazy"
+                className="w-[52%] max-w-[300px] object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              />
+              <span
+                aria-hidden
+                className="absolute left-6 top-6 h-6 w-6 border-l border-t border-foreground/20 transition-all duration-500 ease-out group-hover:left-4 group-hover:top-4 group-hover:h-8 group-hover:w-8 group-hover:border-accent"
+              />
+              <span
+                aria-hidden
+                className="absolute bottom-6 right-6 h-6 w-6 border-b border-r border-foreground/20 transition-all duration-500 ease-out group-hover:bottom-4 group-hover:right-4 group-hover:h-8 group-hover:w-8 group-hover:border-accent"
+              />
+            </div>
+            <div className="flex flex-col justify-between bg-background p-8 md:col-span-5 md:p-12">
+              <div>
+                <span className="label-mono text-accent">Sistema Interno / Automação</span>
+                <h3 className="mt-6 font-display text-3xl tracking-tight transition-transform duration-400 group-hover:translate-x-1 md:text-4xl">
+                  Sistema de Comandas
+                </h3>
+                <p className="label-mono mt-3 text-muted-foreground">Gráfica Caiuás</p>
+                <p className="mt-6 max-w-[42ch] text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Sistema interno desenvolvido para substituir o processo manual de criação de
+                  comandas em Word, tornando a operação mais rápida, organizada e padronizada.
+                </p>
+                <p className="mt-4 max-w-[42ch] text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Aplicação para criação de comandas de Ordem de Serviço e Entrega, com cadastro do
+                  cliente, materiais e quantidades, observações, datas de saída e entrega,
+                  responsável, campo para assinatura, geração para impressão/PDF, histórico e
+                  controle da numeração das comandas.
+                </p>
+              </div>
+              <ul className="mt-10 flex flex-wrap gap-2">
+                {["Ordem de Serviço", "Entrega", "Impressão / PDF", "Histórico", "Numeração"].map(
+                  (t) => (
+                    <li
+                      key={t}
+                      className="label-mono border border-hairline px-3 py-1.5 text-muted-foreground transition-colors duration-300 group-hover:border-foreground/25"
+                    >
+                      {t}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+          </article>
+        </Reveal>
+
+
         <Stagger
           step={90}
           variant="clip"

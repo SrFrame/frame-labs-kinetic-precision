@@ -364,7 +364,7 @@ export function Work() {
         </Stagger>
         <Reveal>
           <p className="label-mono mt-6 text-muted-foreground">
-            Projetos conceituais — a FRAME LABS está construindo seu portfólio inicial.
+            Cases reais já estão no ar — e este é só o começo.
           </p>
         </Reveal>
       </div>
